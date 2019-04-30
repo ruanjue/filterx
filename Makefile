@@ -10,14 +10,14 @@ CFLAGS=-g3 -W -Wall -Wno-unused-but-set-variable -O4 -D_FILE_OFFSET_BITS=64 -D_G
 endif
 
 GLIBS=-lm -lrt -lpthread -lz
-GENERIC_SRC=mem_share.h string.h sort.h list.h heap.h filereader.h hashset.h
+GENERIC_SRC=mem_share.h string.h sort.h list.h heap.h file_reader.h hashset.h
 
 PROGS=filterx
 
 all: $(PROGS)
 
 filterx: $(GENERIC_SRC) file_reader.c filterx.c
-	$(CC) $(CFLAGS) -o $@ filterx.c file_reader.c.c $(GLIBS)
+	$(CC) $(CFLAGS) -o $@ filterx.c file_reader.c $(GLIBS)
 
 clean:
 	rm -f *.o *.gcda *.gcno *.gcov gmon.out $(PROGS)

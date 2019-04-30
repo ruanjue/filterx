@@ -194,6 +194,10 @@ int fread_line2(String *line, FileReader *fr){
 			}
 			if(fr->size == fr->capacity){
 				fr->capacity += 4 * 1024;
+				//if(fr->size > fr->capacity) {
+					//fprintf(stderr, " -- Cannot open %s in %s -- %s:%d --\n", fr->files->buffer[fr->fidx].filename, __FUNCTION__, __FILE__, __LINE__);
+					//exit(1);
+				//}
 				fr->buffer = (char*)realloc(fr->buffer, fr->capacity + 2);
 			}
 			n = fr_fread(fr->buffer + fr->size, sizeof(char), fr->capacity - fr->size, ((fr_file_t*)ref_fr_filev(fr->files, fr->fidx))->file);
